@@ -1,28 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import { CardActionArea } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import DateRangeIcon from '@mui/icons-material/DateRange';
-import Zoom from '@mui/material/Zoom';
 import Grow from '@mui/material/Grow';
+import Context from "@/context/global"
+export default function List() {
 
-export default function List(props:any) {
-
-    const {handleItem} = props
+    const {setMarkdown,setCode} = useContext(Context)
     const data = [1,2,3,4,5,6,7,8,9]
     const handleMarkdownItem = (item:any)=>{
-      handleItem(item)
+   
+     setCode({
+      id:data,
+      title:"a1a11s",
+      text:`This is a [Next.js](https://nextjs.org/) project bootstrapped with (https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+      ## Getting Started
+      
+      First, run the development server:`
+      
+      
+    })
+     setMarkdown(true)
     }
 
   return (
-    // <Zoom in timeout={700} style={{ transitionDelay: '1400ms' }}>
+   
     <Box sx={{
         height:"calc(100vh - 112px)",
         overflow:"hidden",
@@ -31,12 +38,13 @@ export default function List(props:any) {
             display:"none",   
         }
       }}>
-     {/* <Grow in style={{ transformOrigin: '0 0 0' }} timeout={10000}> */}
+   
     
    {
     data.map((item:any)=>{
         return (
             <Grow in style={{ transformOrigin: '0 0 0',transitionDelay: '900ms'}} timeout={800 * item} key={item} onClick={()=>handleMarkdownItem(item)}> 
+            
             <Card sx={{marginBottom:"12px",cursor:"pointer"}}>
             <CardActionArea>
             <CardHeader title="Shrimp and Chorizo Paella"
@@ -50,27 +58,11 @@ export default function List(props:any) {
           </CardActions>
           </CardActionArea>
         </Card>
-        </Grow>
+      
+         </Grow>
         )
     })
    }
-   {/* </Grow> */}
-    {/* <Card>
-        <CardHeader title="Shrimp and Chorizo Paella"
-        ></CardHeader>
-      <CardActions>
-        <Stack direction="row" spacing={1} sx={{color:"#ccc"}}>
-        <DateRangeIcon/>
-        <span>2023-11-12 15：45：45</span>
-        <span> ◦</span>
-        <span>Vue</span>
-        </Stack>
-        
-      </CardActions>
-    </Card> */}
-    {/* </Grow> */}
     </Box>
-    
-    // </Zoom>
   )
 }

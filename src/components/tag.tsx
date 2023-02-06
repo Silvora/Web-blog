@@ -13,7 +13,6 @@ export default function Tag() {
     <Stack direction="row" sx={{marginBottom:"8px"}}>
       <SellIcon/><span style={{paddingLeft:"8px"}}>热点标签</span>
       </Stack>
-      {/* <Divider></Divider> */}
       
 <Chip label="primary" color="primary" sx={{margin:"6px 6px 6px 0"}}/>
 <Chip label="success" color="success" sx={{marginRight:"4px"}}/>

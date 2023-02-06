@@ -1,14 +1,6 @@
-import React from 'react'
-
-import Box from '@mui/material/Box';
-
-import Button from '@mui/material/Button';
+import React, { useContext } from 'react'
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import ListItemText from '@mui/material/ListItemText';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -23,7 +15,7 @@ import remarkGfm from 'remark-gfm'
 
 //import "github-markdown-css"
 
-
+import Context from "@/context/global"
 
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {dark} from 'react-syntax-highlighter/dist/cjs/styles/prism'
@@ -39,17 +31,14 @@ const Transition = React.forwardRef(function Transition(
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
-export default function Markdown(props:any) {
+export default function Markdown() {
 
-    const {open,code,handleMarkdown} = props
-    //const [open, setOpen] = React.useState(false);
 
-    // const handleClickOpen = () => {
-    //   setOpen(true);
-    // };
+    const {markdown,setMarkdown,code} = useContext(Context)
+
   
     const handleClose = () => {
-        handleMarkdown(false);
+        setMarkdown(false)
     };
   
 
@@ -57,20 +46,13 @@ export default function Markdown(props:any) {
     <div>
     <Dialog
       fullScreen
-      open={open}
+      open={markdown}
       onClose={handleClose}
       TransitionComponent={Transition}
     >
       <AppBar sx={{ position: 'relative',backgroundColor:"none" }}>
         <Toolbar>
-          {/* <IconButton
-            edge="start"
-            color="inherit"
-            onClick={handleClose}
-            aria-label="close"
-          >
-            <CloseIcon />
-          </IconButton> */}
+        
           <Typography sx={{ flex: 1 }} variant="h6" component="div">
             {code.title}
           </Typography>

@@ -11,14 +11,13 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { height } from "@mui/system";
-
+import Slide from '@mui/material/Slide';
 export default function Time() {
 	const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	return (
+		<Slide direction='up' in>
 		<Timeline
 			position='alternate'
 			sx={{
@@ -77,5 +76,6 @@ export default function Time() {
 				<TimelineContent></TimelineContent>
 			</TimelineItem>
 		</Timeline>
+		</Slide>
 	);
 }

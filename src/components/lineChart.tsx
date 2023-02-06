@@ -2,9 +2,10 @@ import React, { useLayoutEffect, useRef } from 'react'
 import Box from '@mui/material/Box';
 import * as echarts from "echarts"
 import Paper from '@mui/material/Paper';
+import Zoom from '@mui/material/Zoom';
 export default function LineChart() {
 
-    const line = useRef<any>()
+    const line = useRef<any>(null)
 
 
 const option:any= {
@@ -39,8 +40,8 @@ const option:any= {
 
 
     useLayoutEffect(()=>{
-    const myChart = echarts.init(line.current);
-    myChart.setOption(option);
+      const myChart = echarts.init(line.current);
+      myChart.setOption(option);
     window.addEventListener('resize', function() {
         myChart.resize();
       });
@@ -48,10 +49,12 @@ const option:any= {
 
 
   return (
+    <Zoom in timeout={500} style={{ transitionDelay: '1000ms' }}>
     <Paper sx={{height:"calc(100vh - 536px)",padding:"24px"}}>
         <Box sx={{height:"40px"}}><span style={{fontWeight:"bold",fontSize:"1.4rem"}}>访问量</span>
         <span style={{float:"right",color:"#ccc"}}>总访问量：1111</span></Box>
         <Box sx={{height:"calc(100% - 40px)"}} ref={line}></Box>
     </Paper>
+    </Zoom>
   )
 }

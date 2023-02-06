@@ -2,13 +2,13 @@ import React, { useLayoutEffect, useRef } from 'react'
 import Box from '@mui/material/Box';
 import * as echarts from "echarts"
 import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
+
+import Zoom from '@mui/material/Zoom';
 export default function BarChart() {
 
 
-    const bar = useRef<any>()
+    const bar = useRef<any>(null)
 
-  //const myChart = echarts.init(chartDom);
 const option:any = {
   
   tooltip: {
@@ -43,10 +43,11 @@ const option:any = {
   ]
 };
 
+
 useLayoutEffect(()=>{
+  
   const myChart = echarts.init(bar.current);
   myChart.setOption(option);
-
   window.addEventListener('resize', function() {
     myChart.resize();
   });
@@ -55,9 +56,11 @@ useLayoutEffect(()=>{
 
 
   return (
+    <Zoom in timeout={500} style={{ transitionDelay: '600ms' }}>
     <Paper sx={{height:"400px",padding:"24px"}} >
       <Box sx={{height:"40px",fontWeight:"bold",fontSize:"1.4rem"}}>分类情况</Box>
         <Box sx={{height:"312px"}} ref={bar}></Box>
     </Paper>
+    </Zoom>
   )
 }

@@ -14,7 +14,6 @@ export default function Notice() {
       <Stack direction="row" sx={{marginBottom:"8px"}}>
       <ViewTimelineIcon/><span style={{paddingLeft:"8px"}}>网站公告</span>
       </Stack>
-      {/* <Divider></Divider> */}
       <Alert severity="warning">This is a warning alert — check it outwarning alert — check it outwarning alert — check it outwarning alert — check it outwarning alert — check it out!</Alert>
       </Box>
 

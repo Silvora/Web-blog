@@ -1,32 +1,27 @@
-import React, { use, useEffect, useLayoutEffect, useState } from 'react'
-import Router from 'next/router';
+import React, { useContext } from 'react'
 
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Tooltip,{ TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import AppsIcon from '@mui/icons-material/Apps';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import HomeIcon from '@mui/icons-material/Home';
-import { getToken, setToken } from '@/utils/token';
+import { setToken } from '@/utils/token';
 import Link from 'next/link';
 
+import Context from '@/context/global';
 
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -41,12 +36,10 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 
 
-export default function Header(props:any) {
+export default function Header() {
 
+    const {setSearch,theme,setTheme}= useContext(Context)
 
-
-    const {handleSearch,handleTheme} = props
-    const [theme,setTheme] = useState(true)
 
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -71,36 +64,15 @@ export default function Header(props:any) {
 
 
     const handleDialogModel = ()=>{
-        handleSearch(true)
+      setSearch(true)
     }
 
-    // const handleRouteItem = ()=>{
-    //    // console.log("object",route);
-    //     //Router.push(route)
-    //     handleMobileMenuClose()
-    // }
   
     const handleIsThemes=()=>{
         let t = !theme
         setTheme(t)
        setToken("theme",t)
-       handleTheme(t)
     }
-
-    useEffect(()=>{
-      let val = getToken("theme")
-
-      console.log(val)
-      if(val == undefined){
-        setToken("theme",true)
-        val = true
-      }
-
-      if(val == "false"){
-        handleIsThemes()
-      }
-
-    },[])
 
 
     
@@ -179,7 +151,7 @@ export default function Header(props:any) {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{backgroundColor:"transparent",color:"#000"}}>
+      <AppBar position="static" sx={{backgroundColor:"transparent"}}>
         <Toolbar>
           <Typography
             variant="h6"
@@ -202,7 +174,7 @@ export default function Header(props:any) {
             </IconButton>
             </Link>
             </LightTooltip>
-          
+
             <LightTooltip title="类别" enterDelay={500} leaveDelay={200}>
             <Link href="/about">
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -241,6 +213,20 @@ export default function Header(props:any) {
                 <DarkModeIcon/>
               }
             </IconButton>
+            </LightTooltip>
+
+
+            <LightTooltip title="Github" enterDelay={500} leaveDelay={200}>
+            <a href="http://github.com/Zjs-7579" target="_blank" rel="noreferrer">
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              color="inherit"
+             
+            >
+             <GitHubIcon/>
+            </IconButton>
+            </a>
             </LightTooltip>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

@@ -1,10 +1,7 @@
-import React,{useState} from 'react'
+import React,{useContext} from 'react'
 
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
@@ -12,6 +9,10 @@ import { TransitionProps } from '@mui/material/transitions';
 import TextField from '@mui/material/TextField';
 
 import SearchList from './searchList';
+
+
+import Context from '@/context/global';
+
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
       children: React.ReactElement<any, any>;
@@ -21,20 +22,18 @@ const Transition = React.forwardRef(function Transition(
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
-export default function Search(props:any) {
-    const {open,setSearchDialog} = props
+export default function Search() {
 
-  
+    const {search,setSearch} = useContext(Context)
     const handleClose = () => {
-      //setOpen(false);
-      setSearchDialog(false)
+      setSearch(false)
     };
   
 
   return (
     <div>
       <Dialog
-        open={open}
+        open={search}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
