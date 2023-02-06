@@ -1,8 +1,10 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, {useEffect, useRef } from 'react'
 import Box from '@mui/material/Box';
 import * as echarts from "echarts"
 import Paper from '@mui/material/Paper';
 import Zoom from '@mui/material/Zoom';
+
+var myChart: echarts.EChartsType
 export default function LineChart() {
 
     const line = useRef<any>(null)
@@ -38,10 +40,14 @@ const option:any= {
 };
 
 
+useEffect(()=>{
+  if (myChart != null && myChart != undefined){
+    myChart.dispose();
+}
 
-    useLayoutEffect(()=>{
-      const myChart = echarts.init(line.current);
-      myChart.setOption(option);
+   myChart = echarts.init(line.current);
+  myChart.setOption(option);
+    
     window.addEventListener('resize', function() {
         myChart.resize();
       });

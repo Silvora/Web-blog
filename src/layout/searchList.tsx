@@ -83,7 +83,7 @@ export default function SearchList() {
   useEffect(()=>{
 
     setTimeout(() => {
-      //setData(a)
+     // setData(a)
     }, 5000);
    
   },[])

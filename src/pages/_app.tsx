@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import Context from "@/context/global"
 import Layout from "@/layout/index"
-import { useState, useLayoutEffect } from 'react'
+import { useState,useEffect } from 'react'
 import { getToken, setToken } from '@/utils/token'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [markdown,setMarkdown] = useState(false);
   const [code,setCode] = useState({})
 
-  useLayoutEffect(()=>{
+  useEffect(()=>{
     const T = getToken("theme")
 
      if(T == undefined){
