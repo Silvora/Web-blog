@@ -5,7 +5,8 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Zoom from '@mui/material/Zoom';
-export default function User() {
+export default function User(props:any) {
+  const {classLen, contextLen} = props.data
   return (
     <Zoom in timeout={500} style={{ transitionDelay: '500ms' }}>
  
@@ -23,11 +24,11 @@ export default function User() {
       >
        <Box>
         <p style={{fontSize:"18px",fontWeight:"bold"}}>文章</p>
-        <p>12</p>
+        <p>{contextLen?contextLen:0}</p>
        </Box>
        <Box>
        <p style={{fontSize:"18px",fontWeight:"bold"}}>分类</p>
-        <p>9</p>
+        <p>{classLen?classLen:0}</p>
        </Box>
        <Box>
        <p style={{fontSize:"18px",fontWeight:"bold"}}>标签</p>

@@ -8,24 +8,15 @@ import Stack from '@mui/material/Stack';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import Grow from '@mui/material/Grow';
 import Context from "@/context/global"
-export default function List() {
-
+export default function List(props:any) {
+    const {data}=props
     const {setMarkdown,setCode} = useContext(Context)
-    const data = [1,2,3,4,5,6,7,8,9]
+   // const data = [1,2,3,4,5,6,7,8,9]
     const handleMarkdownItem = (item:any)=>{
    
-     setCode({
-      id:data,
-      title:"a1a11s",
-      text:`This is a [Next.js](https://nextjs.org/) project bootstrapped with (https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-      ## Getting Started
-      
-      First, run the development server:`
-      
-      
-    })
-     setMarkdown(true)
+      console.log(item);
+      setCode(item)
+      setMarkdown(true)
     }
 
   return (
@@ -41,18 +32,18 @@ export default function List() {
    
     
    {
-    data.map((item:any)=>{
+    data.map((item:any,idx:any)=>{
         return (
-            <Grow in style={{ transformOrigin: '0 0 0',transitionDelay: '900ms'}} timeout={800 * item} key={item} onClick={()=>handleMarkdownItem(item)}> 
+            <Grow in style={{ transformOrigin: '0 0 0',transitionDelay: '900ms'}} timeout={800 * (idx+1)} key={item.uid} onClick={()=>handleMarkdownItem(item)}> 
             
             <Card sx={{marginBottom:"12px",cursor:"pointer"}}>
             <CardActionArea>
-            <CardHeader title="Shrimp and Chorizo Paella"
+            <CardHeader title={item.title}
             ></CardHeader>
           <CardActions>
             <Stack direction="row" spacing={1} sx={{color:"#858585"}}>
              <DateRangeIcon/>
-            <Box sx={{lineHeight:"24px"}}>2023-11-12 15：45：45 ◦ Vue</Box>
+            <Box sx={{lineHeight:"24px"}}>{item.createTime} ◦ {item.class}</Box>
             </Stack>
             
           </CardActions>

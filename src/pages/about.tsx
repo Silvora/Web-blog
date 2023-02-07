@@ -6,17 +6,11 @@ import Slide from '@mui/material/Slide';
 import BarChart from '@/components/barChart';
 import CloudChart from '@/components/cloudChart';
 import LineChart from '@/components/lineChart';
-export default function About() {
-
-
-  
-
-  
-  
-  
-
-
-
+export default function About(props:any) {
+ const {_tag} = props
+  _tag.data.forEach((item:any) => {
+    item['value'] = item.id
+ });
 
   return (
     <Slide direction='up' in>
@@ -31,7 +25,7 @@ export default function About() {
 
        <Grid item xs={12}  md={4}>
         
-      <CloudChart/>
+      <CloudChart data={_tag.data}/>
        </Grid>
 
      </Grid>
@@ -42,4 +36,23 @@ export default function About() {
    
    </Slide>
   )
+}
+
+export async function getStaticProps() {
+  const url ='http://api.757909.top/blog'
+  const tagData = await fetch(url+'/tag')
+	const _tag = await tagData.json()
+  
+  // const classData = await fetch('http://127.0.0.1:7412/blog/class')
+	// const _class = await classData.json()
+  // const listData = await fetch('http://127.0.0.1:7412/blog/markdown')
+	// const _list = await listData.json()
+	// 在构建时将接收到 `posts` 参数
+	return {
+	  props: {
+		  _tag,
+      // _class,
+      // _list,
+	  },
+  }
 }

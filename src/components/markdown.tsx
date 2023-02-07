@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import Box from '@mui/material/Box';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import AppBar from '@mui/material/AppBar';
@@ -66,10 +67,11 @@ export default function Markdown() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <DialogContent >
+      <DialogContent>
+      <Box sx={{width:"90%",margin:"0 auto"}}>
       <ReactMarkDown 
             // eslint-disable-next-line react/no-children-prop
-            children={code.text}
+            children={code.context}
             remarkPlugins={[remarkGfm]}
             components={{ code({node, inline, className, children, ...props}:any) {
               const match = /language-(\w+)/.exec(className || '')
@@ -93,6 +95,7 @@ export default function Markdown() {
             }}}
 
                   ></ReactMarkDown>
+      </Box>
       </DialogContent>
     </Dialog>
   </div>
