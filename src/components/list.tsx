@@ -27,7 +27,7 @@ export default function List() {
   }).catch((err) => {
     console.log(err)
   });
- },[])
+ },[setContextLen])
 
   return (
    

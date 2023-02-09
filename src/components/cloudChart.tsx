@@ -69,7 +69,7 @@ export default function CloudChart(props:any) {
       window.addEventListener('resize', function() {
         myChart.resize();
       });
-    },[tag])
+    },[tag,option])
 
 
 

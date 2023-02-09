@@ -19,7 +19,7 @@ export default function Tag() {
   }).catch((err) => {
     console.log(err)
   });
- },[])
+ },[setClassLen])
 
   return (
     <Zoom in timeout={500} style={{ transitionDelay: '700ms' }}>
