@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import { CardActionArea } from '@mui/material';
@@ -8,16 +8,26 @@ import Stack from '@mui/material/Stack';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import Grow from '@mui/material/Grow';
 import Context from "@/context/global"
-export default function List(props:any) {
-    const {data}=props
-    const {setMarkdown,setCode} = useContext(Context)
-   // const data = [1,2,3,4,5,6,7,8,9]
+import { GetMarkdown } from '@/api/request';
+export default function List() {
+    const {setMarkdown,setCode,setContextLen} = useContext(Context)
+ //  const data = [1,2,3,4,5,6,7,8,9]
     const handleMarkdownItem = (item:any)=>{
    
-      console.log(item);
       setCode(item)
       setMarkdown(true)
     }
+
+    const [data,setData]=useState<any>([])
+
+ useEffect(()=>{
+  GetMarkdown().then((result) => {
+    setData(result.data)
+    setContextLen(result.data.length)
+  }).catch((err) => {
+    console.log(err)
+  });
+ },[])
 
   return (
    

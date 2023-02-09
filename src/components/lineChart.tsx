@@ -32,7 +32,7 @@ const option:any= {
   },
   series: [
     {
-      data: [10, 40, 60, 80, 100, 200, 300],
+      data: [1, 2, 1, 3, 0, 1, 2],
       type: 'line',
       smooth: true
     }
@@ -57,8 +57,8 @@ useEffect(()=>{
   return (
     <Zoom in timeout={500} style={{ transitionDelay: '1000ms' }}>
     <Paper sx={{height:"calc(100vh - 536px)",padding:"24px"}}>
-        <Box sx={{height:"40px"}}><span style={{fontWeight:"bold",fontSize:"1.4rem"}}>访问量</span>
-        <span style={{float:"right",color:"#ccc"}}>总访问量：1111</span></Box>
+        <Box sx={{height:"40px",fontWeight:"bold",fontSize:"1.4rem"}}>日志记录
+       </Box>
         <Box sx={{height:"calc(100% - 40px)"}} ref={line}></Box>
     </Paper>
     </Zoom>

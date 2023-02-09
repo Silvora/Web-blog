@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import SellIcon from '@mui/icons-material/Sell';
 import Chip from '@mui/material/Chip';
 import Zoom from '@mui/material/Zoom';
-export default function Tag(props:any) {
-  const {data} = props
+import {GetClass} from "@/api/request"
+import Context from "@/context/global"
+export default function Tag() {
+ // const {data} = props
+ const {setClassLen} = useContext(Context)
+ const [data,setData]=useState<any>([])
+
+ useEffect(()=>{
+  GetClass().then((result) => {
+    setData(result.data)
+    setClassLen(result.data.length)
+  }).catch((err) => {
+    console.log(err)
+  });
+ },[])
+
   return (
     <Zoom in timeout={500} style={{ transitionDelay: '700ms' }}>
     <Paper elevation={3} sx={{padding:"12px"}}>

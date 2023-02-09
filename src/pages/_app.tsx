@@ -10,6 +10,8 @@ export default function App({ Component, pageProps }: AppProps) {
   const [search,setSearch] = useState(false);
   const [markdown,setMarkdown] = useState(false);
   const [code,setCode] = useState({})
+  const [classLen,setClassLen] = useState(0)
+  const [contextLen,setContextLen] = useState(0)
 
   useEffect(()=>{
     const T = getToken("theme")
@@ -24,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
  
   }, [])
   return( 
-    <Context.Provider value={{theme,setTheme,markdown,setMarkdown,code,setCode,search,setSearch}}>
+    <Context.Provider value={{theme,setTheme,markdown,setMarkdown,code,setCode,search,setSearch,classLen,setClassLen,contextLen,setContextLen}}>
     <Layout>
       <Component {...pageProps} />
     </Layout>
