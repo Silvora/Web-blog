@@ -80,10 +80,7 @@ const GetData = ()=>{
 
 useEffect(()=>{
 
-  console.log("first")
-  if(myChart){
     GetData()
-  }
  
   SetCharts()
  

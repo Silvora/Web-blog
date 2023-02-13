@@ -250,7 +250,8 @@ export default function CloudChart() {
        window.addEventListener('resize', function() {
         myChart.resize();
       });
-    },[option])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
 
 
