@@ -65,13 +65,14 @@ export default function Header() {
 
     const handleDialogModel = ()=>{
       setSearch(true)
+      setMobileMoreAnchorEl(null);
     }
 
   
     const handleIsThemes=()=>{
         let t = !theme
         setTheme(t)
-       setToken("theme",t)
+        setToken("theme",t)
     }
 
 
@@ -95,7 +96,7 @@ export default function Header() {
         >
             <Link href="/">
 
-            <MenuItem sx={{width:900}} onClick={handleMobileMenuClose}>
+            <MenuItem sx={{width:900,color:"#000"}} onClick={handleMobileMenuClose}>
             <IconButton size="large" aria-label="show 4 new home" color="inherit">
                 <HomeIcon />
             </IconButton>
@@ -105,7 +106,7 @@ export default function Header() {
           </Link>
 
           <Link href="/about">
-          <MenuItem onClick={handleMobileMenuClose}>
+          <MenuItem sx={{width:900,color:"#000"}} onClick={handleMobileMenuClose}>
          
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                 <AppsIcon />
@@ -118,7 +119,7 @@ export default function Header() {
 
           <Link href="/time">
 
-          <MenuItem onClick={handleMobileMenuClose}>
+          <MenuItem sx={{width:900,color:"#000"}} onClick={handleMobileMenuClose}>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -131,8 +132,8 @@ export default function Header() {
           </MenuItem>
           </Link>
 
-          <Link href="/search">
-          <MenuItem onClick={handleMobileMenuClose}>
+          {/* <Link href="/search"> */}
+          <MenuItem sx={{width:900,color:"#000"}} onClick={handleDialogModel}>
           
             <IconButton
               size="large"
@@ -141,10 +142,10 @@ export default function Header() {
             >
               <SearchIcon />
             </IconButton>
-            <p>搜素</p>
+            <p>搜索</p>
           
           </MenuItem>
-          </Link>
+          {/* </Link> */}
         </Menu>
       );
 

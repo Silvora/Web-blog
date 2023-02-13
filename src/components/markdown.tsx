@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import Dialog from '@mui/material/Dialog';
+import CircularProgress from '@mui/material/CircularProgress';
 import DialogContent from '@mui/material/DialogContent';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -21,6 +22,7 @@ import Context from "@/context/global"
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {dark} from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
+import {AddRead, GetMarkdownItem} from "@/api/request"
 
 
 const Transition = React.forwardRef(function Transition(
@@ -37,10 +39,27 @@ export default function Markdown() {
 
     const {markdown,setMarkdown,code} = useContext(Context)
 
+    const [context,setContext] = useState<any>(null)
   
     const handleClose = () => {
         setMarkdown(false)
+        setContext(null)
+        //setCode({})
     };
+
+    useEffect(()=>{
+      if(code.uid){
+        console.log("object",code);
+        GetMarkdownItem(code.uid).then((result) => {
+         // console.log(result)
+
+          setContext(result.data)
+          AddRead()
+        }).catch((err) => {
+          
+        });
+      }
+    },[code])
   
 
   return (
@@ -68,10 +87,12 @@ export default function Markdown() {
         </Toolbar>
       </AppBar>
       <DialogContent>
-      <Box sx={{width:"90%",margin:"0 auto"}}>
-      <ReactMarkDown 
+        
+      {context?<Box sx={{width:"65%",margin:"0 auto"}}>
+     
+        <ReactMarkDown 
             // eslint-disable-next-line react/no-children-prop
-            children={code.context}
+            children={context.context}
             remarkPlugins={[remarkGfm]}
             components={{ code({node, inline, className, children, ...props}:any) {
               const match = /language-(\w+)/.exec(className || '')
@@ -94,8 +115,15 @@ export default function Markdown() {
               )
             }}}
 
-                  ></ReactMarkDown>
+        ></ReactMarkDown>
+        
+
+      </Box>: <Box sx={{width:"65%",margin:"0 auto",textAlign:"center"}}>
+        
+            <CircularProgress></CircularProgress>
       </Box>
+      }
+  
       </DialogContent>
     </Dialog>
   </div>

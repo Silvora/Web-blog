@@ -1,9 +1,9 @@
 import axios from "axios";
 
 
-let baseURL = "http://api.757909.top/blog"
+//let baseURL = "http://127.0.0.1:7412/blog"
 // if(process.env == 'production'){
-//     baseURL="http://192.168.0.0.1/api"
+let baseURL="http://api.757909.top/blog"
 // }
 
 const http = axios.create({

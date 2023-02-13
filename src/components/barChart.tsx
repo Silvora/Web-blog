@@ -1,15 +1,20 @@
-import React, {useEffect, useRef } from 'react'
+import React, {useEffect, useRef, useState } from 'react'
 import Box from '@mui/material/Box';
 import * as echarts from "echarts"
 import Paper from '@mui/material/Paper';
 
 import Zoom from '@mui/material/Zoom';
+import { GetTotal } from '@/api/request';
 
 var myChart: echarts.EChartsType
 export default function BarChart() {
 
 
     const bar = useRef<any>(null)
+
+    const [x,setX] = useState<any>([])
+    const [xData,setXData] = useState<any>([])
+
 const getOption:any = ()=>{
   return {
   
@@ -27,7 +32,8 @@ const getOption:any = ()=>{
     },
     xAxis: {
       type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      data:x,
       axisTick: {
         alignWithLabel: true
       }
@@ -39,7 +45,8 @@ const getOption:any = ()=>{
       {
         name: 'Direct',
         barWidth: '60%',
-        data: [120, 200, 150, 80, 70, 110, 130],
+        // data: [120, 200, 150, 80, 70, 110, 130],
+        data:xData,
         type: 'bar'
       }
     ]
@@ -47,7 +54,7 @@ const getOption:any = ()=>{
 }
 
 
-useEffect(()=>{
+const SetCharts = ()=>{
   if (myChart != null && myChart != undefined){
     myChart.dispose();
 }
@@ -56,6 +63,31 @@ useEffect(()=>{
   window.addEventListener('resize', function() {
     myChart.resize();
   });
+}
+
+const GetData = ()=>{
+  GetTotal().then((result) => {
+    result.data.forEach((item:any) => {
+      x.push(item.class)
+      xData.push(item.total)
+    });
+   SetCharts()
+  }).catch((err) => {
+    console.log(err)
+  });
+}
+
+
+useEffect(()=>{
+
+  console.log("first")
+  if(myChart){
+    GetData()
+  }
+ 
+  SetCharts()
+ 
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
 

@@ -44,7 +44,7 @@ export default function List() {
    {
     data.map((item:any,idx:any)=>{
         return (
-            <Grow in style={{ transformOrigin: '0 0 0',transitionDelay: '900ms'}} timeout={800 * (idx+1)} key={item.uid} onClick={()=>handleMarkdownItem(item)}> 
+            <Grow in style={{ transformOrigin: '0 0 0',transitionDelay: '500ms'}} timeout={800 + (idx*100)} key={item.uid} onClick={()=>handleMarkdownItem(item)}> 
             
             <Card sx={{marginBottom:"12px",cursor:"pointer"}}>
             <CardActionArea>

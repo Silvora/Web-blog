@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
@@ -7,10 +7,20 @@ import Divider from '@mui/material/Divider';
 import Zoom from '@mui/material/Zoom';
 
 import Context from "@/context/global"
+import { GetRead } from '@/api/request';
 export default function User() {
 
   const {contextLen,classLen} = useContext(Context)
- 
+  const [total,setTotal] = useState<any>()
+  useEffect(()=>{
+    GetRead().then((result:any) => {
+      console.log(result);
+      setTotal(result.readTotal)
+    }).catch((err) => {
+      console.log(err)
+    });
+  },[])
+
   return (
     <Zoom in timeout={500} style={{ transitionDelay: '500ms' }}>
  
@@ -35,8 +45,8 @@ export default function User() {
         <p>{classLen}</p>
        </Box>
        <Box>
-       <p style={{fontSize:"18px",fontWeight:"bold"}}>浏览</p>
-        <p>45</p>
+       <p style={{fontSize:"18px",fontWeight:"bold"}}>阅读</p>
+        <p>{total}</p>
        </Box>
       </Stack>
           </Paper>

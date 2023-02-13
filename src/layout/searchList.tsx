@@ -9,84 +9,19 @@ import ClassIcon from '@mui/icons-material/Class';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import SearchListItem from './searchListItem';
 
-export default function SearchList() {
+export default function SearchList(props:any) {
 
-  const [data,setData] = useState<any>([])
+  const {data} = props
+  //const [data,setData] = useState<any>([])
 
-  let a = [
-    {
-      id:"1",
-      title:"Vue",
-      children:[
-        {
-          id:"1-1",
-          title:"dafdsfs"
-        },
-        {
-          id:"1-2",
-          title:"gfgfh"
-        },
-        {
-          id:"1-3",
-          title:"wqrwqrwe"
-        }
-      ]
-    },
-    {
-      id:"2",
-      title:"React",
-      children:[
-        {
-          id:"2-1",
-          title:"ddd"
-        },
-        {
-          id:"2-2",
-          title:"dsadsa"
-        },
-        {
-          id:"2-3",
-          title:"loipujky"
-        },
-        {
-          id:"2-4",
-          title:"sqffsdf"
-        }
-      ]
-    },
-    {
-      id:"3",
-      title:"Node",
-      children:[
-        {
-          id:"3-1",
-          title:"ddd"
-        },
-        {
-          id:"3-2",
-          title:"dsadsa"
-        },
-        {
-          id:"3-3",
-          title:"loipujky"
-        },
-        {
-          id:"3-4",
-          title:"sqffsdf"
-        }
-      ]
-    }
-  ]
 
   
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    setTimeout(() => {
-     // setData(a)
-    }, 5000);
+  
    
-  },[])
+  // },[])
 
   return (
     <>
@@ -104,7 +39,7 @@ export default function SearchList() {
       <li key={item.id}>
         
         <ul>
-        <Slide direction="up" in timeout={2000*(idx+1)}>
+        <Slide direction="up" in timeout={800+(idx*100)}>
         <ListSubheader sx={{padding:"0"}}>
             {/* <Typography style={{height:"40px"}}>dddd</Typography> */}
             {/* <Paper elevation={0} sx={{padding:"10px 0",fontSize:"1.5rem",color:""}}>Title</Paper>          */}

@@ -20,32 +20,23 @@ const Context = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.createContex
 
 /***/ }),
 
-/***/ 8535:
+/***/ 3214:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ App)
+  "Z": () => (/* binding */ Header)
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(997);
-// EXTERNAL MODULE: ./src/styles/globals.css
-var globals = __webpack_require__(108);
-// EXTERNAL MODULE: ./src/context/global.tsx
-var global = __webpack_require__(6732);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
-;// CONCATENATED MODULE: external "@mui/material/styles"
-const styles_namespaceObject = require("@mui/material/styles");
-;// CONCATENATED MODULE: external "@mui/material/CssBaseline"
-const CssBaseline_namespaceObject = require("@mui/material/CssBaseline");
-var CssBaseline_default = /*#__PURE__*/__webpack_require__.n(CssBaseline_namespaceObject);
+// EXTERNAL MODULE: external "@mui/material/styles"
+var styles_ = __webpack_require__(8442);
 // EXTERNAL MODULE: external "@mui/material/AppBar"
 var AppBar_ = __webpack_require__(3882);
 var AppBar_default = /*#__PURE__*/__webpack_require__.n(AppBar_);
@@ -94,17 +85,13 @@ var GitHub_default = /*#__PURE__*/__webpack_require__.n(GitHub_namespaceObject);
 ;// CONCATENATED MODULE: external "@mui/icons-material/Home"
 const Home_namespaceObject = require("@mui/icons-material/Home");
 var Home_default = /*#__PURE__*/__webpack_require__.n(Home_namespaceObject);
-;// CONCATENATED MODULE: ./src/utils/token.ts
-function setToken(key, val) {
-    localStorage.setItem(key, String(val));
-}
-function getToken(key) {
-    return localStorage.getItem(key);
-}
-
+// EXTERNAL MODULE: ./src/utils/token.ts
+var token = __webpack_require__(6603);
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
 var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
+// EXTERNAL MODULE: ./src/context/global.tsx
+var global = __webpack_require__(6732);
 ;// CONCATENATED MODULE: ./src/layout/header.tsx
 
 
@@ -128,7 +115,7 @@ var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 
 
 
-const LightTooltip = (0,styles_namespaceObject.styled)(({ className , ...props })=>/*#__PURE__*/ jsx_runtime_.jsx((Tooltip_default()), {
+const LightTooltip = (0,styles_.styled)(({ className , ...props })=>/*#__PURE__*/ jsx_runtime_.jsx((Tooltip_default()), {
         ...props,
         classes: {
             popper: className
@@ -158,11 +145,12 @@ function Header() {
     };
     const handleDialogModel = ()=>{
         setSearch(true);
+        setMobileMoreAnchorEl(null);
     };
     const handleIsThemes = ()=>{
         let t = !theme;
         setTheme(t);
-        setToken("theme", t);
+        (0,token/* setToken */.o)("theme", t);
     };
     const mobileMenuId = "primary-search-account-menu-mobile";
     const renderMobileMenu = /*#__PURE__*/ (0,jsx_runtime_.jsxs)((Menu_default()), {
@@ -184,7 +172,8 @@ function Header() {
                 href: "/",
                 children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)((MenuItem_default()), {
                     sx: {
-                        width: 900
+                        width: 900,
+                        color: "#000"
                     },
                     onClick: handleMobileMenuClose,
                     children: [
@@ -203,6 +192,10 @@ function Header() {
             /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                 href: "/about",
                 children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)((MenuItem_default()), {
+                    sx: {
+                        width: 900,
+                        color: "#000"
+                    },
                     onClick: handleMobileMenuClose,
                     children: [
                         /*#__PURE__*/ jsx_runtime_.jsx((IconButton_default()), {
@@ -220,6 +213,10 @@ function Header() {
             /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                 href: "/time",
                 children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)((MenuItem_default()), {
+                    sx: {
+                        width: 900,
+                        color: "#000"
+                    },
                     onClick: handleMobileMenuClose,
                     children: [
                         /*#__PURE__*/ jsx_runtime_.jsx((IconButton_default()), {
@@ -234,22 +231,23 @@ function Header() {
                     ]
                 })
             }),
-            /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                href: "/search",
-                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)((MenuItem_default()), {
-                    onClick: handleMobileMenuClose,
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx((IconButton_default()), {
-                            size: "large",
-                            "aria-label": "account of current user",
-                            color: "inherit",
-                            children: /*#__PURE__*/ jsx_runtime_.jsx((Search_default()), {})
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                            children: "搜素"
-                        })
-                    ]
-                })
+            /*#__PURE__*/ (0,jsx_runtime_.jsxs)((MenuItem_default()), {
+                sx: {
+                    width: 900,
+                    color: "#000"
+                },
+                onClick: handleDialogModel,
+                children: [
+                    /*#__PURE__*/ jsx_runtime_.jsx((IconButton_default()), {
+                        size: "large",
+                        "aria-label": "account of current user",
+                        color: "inherit",
+                        children: /*#__PURE__*/ jsx_runtime_.jsx((Search_default()), {})
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                        children: "搜索"
+                    })
+                ]
             })
         ]
     });
@@ -398,30 +396,254 @@ function Header() {
     });
 }
 
-// EXTERNAL MODULE: external "@mui/material/Dialog"
-var Dialog_ = __webpack_require__(8611);
-var Dialog_default = /*#__PURE__*/__webpack_require__.n(Dialog_);
-// EXTERNAL MODULE: external "@mui/material/DialogContent"
-var DialogContent_ = __webpack_require__(1094);
-var DialogContent_default = /*#__PURE__*/__webpack_require__.n(DialogContent_);
-;// CONCATENATED MODULE: external "@mui/material/DialogTitle"
-const DialogTitle_namespaceObject = require("@mui/material/DialogTitle");
-var DialogTitle_default = /*#__PURE__*/__webpack_require__.n(DialogTitle_namespaceObject);
-// EXTERNAL MODULE: external "@mui/material/Slide"
-var Slide_ = __webpack_require__(6080);
-var Slide_default = /*#__PURE__*/__webpack_require__.n(Slide_);
-;// CONCATENATED MODULE: external "@mui/material/TextField"
-const TextField_namespaceObject = require("@mui/material/TextField");
-var TextField_default = /*#__PURE__*/__webpack_require__.n(TextField_namespaceObject);
+
+/***/ }),
+
+/***/ 2870:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* binding */ Layout)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8442);
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_material_styles__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _mui_material_CssBaseline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4960);
+/* harmony import */ var _mui_material_CssBaseline__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_material_CssBaseline__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3214);
+/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2992);
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(968);
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _context_global__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(6732);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_search__WEBPACK_IMPORTED_MODULE_5__]);
+_search__WEBPACK_IMPORTED_MODULE_5__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+/* eslint-disable @next/next/no-sync-scripts */ /** @format */ 
+
+
+
+
+
+
+
+function Layout({ children  }) {
+    const { theme  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_global__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z);
+    const light = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_2__.createTheme)({
+        palette: {
+            mode: "light"
+        }
+    });
+    const dark = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_2__.createTheme)({
+        palette: {
+            mode: "dark"
+        }
+    });
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_head__WEBPACK_IMPORTED_MODULE_6___default()), {
+                children: [
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("title", {
+                        children: "757909"
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                        name: "description",
+                        content: "Generated by create next app"
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                        name: "viewport",
+                        content: "width=device-width, initial-scale=1"
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                        rel: "icon",
+                        href: "/favicon.ico"
+                    })
+                ]
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                className: "layout_container",
+                style: {
+                    backgroundImage: `url(${theme ? "light_bg.jpg" : "dark_bg.jpg"})`
+                },
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_mui_material_styles__WEBPACK_IMPORTED_MODULE_2__.ThemeProvider, {
+                    theme: theme ? light : dark,
+                    children: [
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_CssBaseline__WEBPACK_IMPORTED_MODULE_3___default()), {}),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_search__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {}),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_header__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {}),
+                        children
+                    ]
+                })
+            })
+        ]
+    });
+}
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 2992:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* binding */ Search)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mui_material_Dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8611);
+/* harmony import */ var _mui_material_Dialog__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_material_Dialog__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _mui_material_DialogContent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1094);
+/* harmony import */ var _mui_material_DialogContent__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_material_DialogContent__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _mui_material_DialogTitle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2468);
+/* harmony import */ var _mui_material_DialogTitle__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_mui_material_DialogTitle__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _mui_material_Slide__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6080);
+/* harmony import */ var _mui_material_Slide__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_mui_material_Slide__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _mui_material_TextField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(6042);
+/* harmony import */ var _mui_material_TextField__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_mui_material_TextField__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _searchList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(9220);
+/* harmony import */ var _context_global__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(6732);
+/* harmony import */ var _api_request__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(9369);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_api_request__WEBPACK_IMPORTED_MODULE_9__]);
+_api_request__WEBPACK_IMPORTED_MODULE_9__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+
+
+
+
+
+
+
+
+
+const Transition = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().forwardRef(function Transition(props, ref) {
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_Slide__WEBPACK_IMPORTED_MODULE_5___default()), {
+        direction: "up",
+        ref: ref,
+        ...props
+    });
+});
+function Search() {
+    const { search , setSearch  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_global__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z);
+    const [searchValue, setSearchValue] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("");
+    const [list, setList] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+    const handleClose = ()=>{
+        setSearch(false);
+    // setSearchValue('')
+    };
+    const handleSearchValue = (e)=>{
+        setSearchValue(e.target.value);
+    };
+    const GetData = ()=>{
+        let obj = {
+            "s": searchValue
+        };
+        let classTag = [];
+        let data = [];
+        (0,_api_request__WEBPACK_IMPORTED_MODULE_9__/* .GetSearchList */ .Mh)(obj).then((result)=>{
+            //console.log(result)
+            result.data.forEach((item)=>{
+                //true
+                if (classTag.includes(item.class)) {
+                    let idx = classTag.indexOf(item.class);
+                    data[idx].children.push(item);
+                } else {
+                    classTag.push(item.class);
+                    data.push({
+                        id: item.class,
+                        title: item.class,
+                        children: [
+                            {
+                                ...item
+                            }
+                        ]
+                    });
+                }
+            });
+            setList(data);
+        }).catch((err)=>{});
+    };
+    const handleEnter = (e)=>{
+        if (e.keyCode == "13") {
+            GetData();
+        }
+    };
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_Dialog__WEBPACK_IMPORTED_MODULE_2___default()), {
+            open: search,
+            TransitionComponent: Transition,
+            keepMounted: true,
+            onClose: handleClose,
+            "aria-describedby": "alert-dialog-slide-description",
+            fullWidth: true,
+            maxWidth: "md",
+            children: [
+                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_DialogTitle__WEBPACK_IMPORTED_MODULE_4___default()), {
+                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_TextField__WEBPACK_IMPORTED_MODULE_6___default()), {
+                        fullWidth: true,
+                        id: "outlined-basic",
+                        label: "Search",
+                        variant: "outlined",
+                        value: searchValue,
+                        onChange: handleSearchValue,
+                        onKeyUp: handleEnter
+                    })
+                }),
+                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_DialogContent__WEBPACK_IMPORTED_MODULE_3___default()), {
+                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_searchList__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+                        data: list
+                    })
+                })
+            ]
+        })
+    });
+}
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 9220:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": () => (/* binding */ SearchList)
+});
+
+// EXTERNAL MODULE: external "react/jsx-runtime"
+var jsx_runtime_ = __webpack_require__(997);
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__(6689);
+// EXTERNAL MODULE: external "@mui/material/Box"
+var Box_ = __webpack_require__(19);
+var Box_default = /*#__PURE__*/__webpack_require__.n(Box_);
 ;// CONCATENATED MODULE: external "@mui/material/List"
 const List_namespaceObject = require("@mui/material/List");
 var List_default = /*#__PURE__*/__webpack_require__.n(List_namespaceObject);
+// EXTERNAL MODULE: external "@mui/material/Typography"
+var Typography_ = __webpack_require__(7163);
+var Typography_default = /*#__PURE__*/__webpack_require__.n(Typography_);
 ;// CONCATENATED MODULE: external "@mui/material/ListSubheader"
 const ListSubheader_namespaceObject = require("@mui/material/ListSubheader");
 var ListSubheader_default = /*#__PURE__*/__webpack_require__.n(ListSubheader_namespaceObject);
 // EXTERNAL MODULE: external "@mui/material/Stack"
 var Stack_ = __webpack_require__(8742);
 var Stack_default = /*#__PURE__*/__webpack_require__.n(Stack_);
+// EXTERNAL MODULE: external "@mui/material/Slide"
+var Slide_ = __webpack_require__(6080);
+var Slide_default = /*#__PURE__*/__webpack_require__.n(Slide_);
 ;// CONCATENATED MODULE: external "@mui/icons-material/Class"
 const Class_namespaceObject = require("@mui/icons-material/Class");
 var Class_default = /*#__PURE__*/__webpack_require__.n(Class_namespaceObject);
@@ -436,6 +658,8 @@ var CardHeader_ = __webpack_require__(9361);
 var CardHeader_default = /*#__PURE__*/__webpack_require__.n(CardHeader_);
 // EXTERNAL MODULE: external "@mui/material"
 var material_ = __webpack_require__(5692);
+// EXTERNAL MODULE: ./src/context/global.tsx
+var global = __webpack_require__(6732);
 ;// CONCATENATED MODULE: ./src/layout/searchListItem.tsx
 
 
@@ -446,21 +670,23 @@ var material_ = __webpack_require__(5692);
 
 function SearchListItem(props) {
     const { data  } = props;
-    const { setMarkdown  } = (0,external_react_.useContext)(global/* default */.Z);
-    const handleMarkdown = ()=>{
+    const { setMarkdown , setCode  } = (0,external_react_.useContext)(global/* default */.Z);
+    const handleMarkdown = (item)=>{
+        console.log(item);
         setMarkdown(true);
+        setCode(item);
     };
     return /*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
         children: data.map((item, idx)=>/*#__PURE__*/ jsx_runtime_.jsx((Slide_default()), {
                 direction: "up",
                 in: true,
-                timeout: 1000 * (idx + 1),
+                timeout: 1000 + (idx + 100),
                 children: /*#__PURE__*/ jsx_runtime_.jsx((Card_default()), {
                     sx: {
                         margin: "8px 0"
                     },
                     variant: "outlined",
-                    onClick: handleMarkdown,
+                    onClick: ()=>handleMarkdown(item),
                     children: /*#__PURE__*/ jsx_runtime_.jsx(material_.CardActionArea, {
                         children: /*#__PURE__*/ jsx_runtime_.jsx((CardHeader_default()), {
                             title: item.title
@@ -483,77 +709,11 @@ function SearchListItem(props) {
 
 
 
-function SearchList() {
-    const [data, setData] = (0,external_react_.useState)([]);
-    let a = [
-        {
-            id: "1",
-            title: "Vue",
-            children: [
-                {
-                    id: "1-1",
-                    title: "dafdsfs"
-                },
-                {
-                    id: "1-2",
-                    title: "gfgfh"
-                },
-                {
-                    id: "1-3",
-                    title: "wqrwqrwe"
-                }
-            ]
-        },
-        {
-            id: "2",
-            title: "React",
-            children: [
-                {
-                    id: "2-1",
-                    title: "ddd"
-                },
-                {
-                    id: "2-2",
-                    title: "dsadsa"
-                },
-                {
-                    id: "2-3",
-                    title: "loipujky"
-                },
-                {
-                    id: "2-4",
-                    title: "sqffsdf"
-                }
-            ]
-        },
-        {
-            id: "3",
-            title: "Node",
-            children: [
-                {
-                    id: "3-1",
-                    title: "ddd"
-                },
-                {
-                    id: "3-2",
-                    title: "dsadsa"
-                },
-                {
-                    id: "3-3",
-                    title: "loipujky"
-                },
-                {
-                    id: "3-4",
-                    title: "sqffsdf"
-                }
-            ]
-        }
-    ];
-    (0,external_react_.useEffect)(()=>{
-        setTimeout(()=>{
-        // setData(a)
-        }, 5000);
-    }, []);
+function SearchList(props) {
+    const { data  } = props;
+    //const [data,setData] = useState<any>([])
+    // useEffect(()=>{
+    // },[])
     return /*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
         children: data.length ? /*#__PURE__*/ jsx_runtime_.jsx((Box_default()), {
             sx: {
@@ -573,7 +733,7 @@ function SearchList() {
                                 /*#__PURE__*/ jsx_runtime_.jsx((Slide_default()), {
                                     direction: "up",
                                     in: true,
-                                    timeout: 2000 * (idx + 1),
+                                    timeout: 800 + idx * 100,
                                     children: /*#__PURE__*/ jsx_runtime_.jsx((ListSubheader_default()), {
                                         sx: {
                                             padding: "0"
@@ -657,119 +817,29 @@ function SearchList() {
     });
 }
 
-;// CONCATENATED MODULE: ./src/layout/search.tsx
 
+/***/ }),
 
+/***/ 6505:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-
-
-
-
-
-
-const Transition = /*#__PURE__*/ external_react_default().forwardRef(function Transition(props, ref) {
-    return /*#__PURE__*/ jsx_runtime_.jsx((Slide_default()), {
-        direction: "up",
-        ref: ref,
-        ...props
-    });
-});
-function Search() {
-    const { search , setSearch  } = (0,external_react_.useContext)(global/* default */.Z);
-    const handleClose = ()=>{
-        setSearch(false);
-    };
-    return /*#__PURE__*/ jsx_runtime_.jsx("div", {
-        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)((Dialog_default()), {
-            open: search,
-            TransitionComponent: Transition,
-            keepMounted: true,
-            onClose: handleClose,
-            "aria-describedby": "alert-dialog-slide-description",
-            fullWidth: true,
-            maxWidth: "md",
-            children: [
-                /*#__PURE__*/ jsx_runtime_.jsx((DialogTitle_default()), {
-                    children: /*#__PURE__*/ jsx_runtime_.jsx((TextField_default()), {
-                        fullWidth: true,
-                        id: "outlined-basic",
-                        label: "Search",
-                        variant: "outlined"
-                    })
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx((DialogContent_default()), {
-                    children: /*#__PURE__*/ jsx_runtime_.jsx(SearchList, {})
-                })
-            ]
-        })
-    });
-}
-
-;// CONCATENATED MODULE: external "next/head"
-const head_namespaceObject = require("next/head");
-var head_default = /*#__PURE__*/__webpack_require__.n(head_namespaceObject);
-;// CONCATENATED MODULE: ./src/layout/index.tsx
-/* eslint-disable @next/next/no-sync-scripts */ /** @format */ 
-
-
-
-
-
-
-
-function Layout({ children  }) {
-    const { theme  } = (0,external_react_.useContext)(global/* default */.Z);
-    const light = (0,styles_namespaceObject.createTheme)({
-        palette: {
-            mode: "light"
-        }
-    });
-    const dark = (0,styles_namespaceObject.createTheme)({
-        palette: {
-            mode: "dark"
-        }
-    });
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)((head_default()), {
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx("title", {
-                        children: "757909"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("meta", {
-                        name: "description",
-                        content: "Generated by create next app"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("meta", {
-                        name: "viewport",
-                        content: "width=device-width, initial-scale=1"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("link", {
-                        rel: "icon",
-                        href: "/favicon.ico"
-                    })
-                ]
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "layout_container",
-                style: {
-                    backgroundImage: `url(${theme ? "light_bg.jpg" : "dark_bg.jpg"})`
-                },
-                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(styles_namespaceObject.ThemeProvider, {
-                    theme: theme ? light : dark,
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx((CssBaseline_default()), {}),
-                        /*#__PURE__*/ jsx_runtime_.jsx(Search, {}),
-                        /*#__PURE__*/ jsx_runtime_.jsx(Header, {}),
-                        children
-                    ]
-                })
-            })
-        ]
-    });
-}
-
-;// CONCATENATED MODULE: ./src/pages/_app.tsx
+"use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ App)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _styles_globals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(108);
+/* harmony import */ var _styles_globals_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_globals_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _context_global__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6732);
+/* harmony import */ var _layout_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2870);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_token__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6603);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_layout_index__WEBPACK_IMPORTED_MODULE_3__]);
+_layout_index__WEBPACK_IMPORTED_MODULE_3__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
 
 
@@ -777,22 +847,22 @@ function Layout({ children  }) {
 
 
 function App({ Component , pageProps  }) {
-    const [theme, setTheme] = (0,external_react_.useState)(true);
-    const [search, setSearch] = (0,external_react_.useState)(false);
-    const [markdown, setMarkdown] = (0,external_react_.useState)(false);
-    const [code, setCode] = (0,external_react_.useState)({});
-    const [classLen, setClassLen] = (0,external_react_.useState)(0);
-    const [contextLen, setContextLen] = (0,external_react_.useState)(0);
-    (0,external_react_.useEffect)(()=>{
-        const T = getToken("theme");
+    const [theme, setTheme] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
+    const [search, setSearch] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false);
+    const [markdown, setMarkdown] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false);
+    const [code, setCode] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)({});
+    const [classLen, setClassLen] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(0);
+    const [contextLen, setContextLen] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(0);
+    (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(()=>{
+        const T = (0,_utils_token__WEBPACK_IMPORTED_MODULE_5__/* .getToken */ .L)("theme");
         if (T == undefined) {
-            setToken("theme", true);
+            (0,_utils_token__WEBPACK_IMPORTED_MODULE_5__/* .setToken */ .o)("theme", true);
         }
         if (T == "false") {
             setTheme(false);
         }
     }, []);
-    return /*#__PURE__*/ jsx_runtime_.jsx(global/* default.Provider */.Z.Provider, {
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_context_global__WEBPACK_IMPORTED_MODULE_2__/* ["default"].Provider */ .Z.Provider, {
         value: {
             theme,
             setTheme,
@@ -807,12 +877,32 @@ function App({ Component , pageProps  }) {
             contextLen,
             setContextLen
         },
-        children: /*#__PURE__*/ jsx_runtime_.jsx(Layout, {
-            children: /*#__PURE__*/ jsx_runtime_.jsx(Component, {
+        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_layout_index__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
                 ...pageProps
             })
         })
     });
+}
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 6603:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "L": () => (/* binding */ getToken),
+/* harmony export */   "o": () => (/* binding */ setToken)
+/* harmony export */ });
+function setToken(key, val) {
+    localStorage.setItem(key, String(val));
+}
+function getToken(key) {
+    return localStorage.getItem(key);
 }
 
 
@@ -865,6 +955,14 @@ module.exports = require("@mui/material/CardHeader");
 
 /***/ }),
 
+/***/ 4960:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("@mui/material/CssBaseline");
+
+/***/ }),
+
 /***/ 8611:
 /***/ ((module) => {
 
@@ -878,6 +976,14 @@ module.exports = require("@mui/material/Dialog");
 
 "use strict";
 module.exports = require("@mui/material/DialogContent");
+
+/***/ }),
+
+/***/ 2468:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("@mui/material/DialogTitle");
 
 /***/ }),
 
@@ -905,6 +1011,14 @@ module.exports = require("@mui/material/Stack");
 
 /***/ }),
 
+/***/ 6042:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("@mui/material/TextField");
+
+/***/ }),
+
 /***/ 1431:
 /***/ ((module) => {
 
@@ -918,6 +1032,14 @@ module.exports = require("@mui/material/Toolbar");
 
 "use strict";
 module.exports = require("@mui/material/Typography");
+
+/***/ }),
+
+/***/ 8442:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("@mui/material/styles");
 
 /***/ }),
 
@@ -1113,6 +1235,14 @@ module.exports = require("next/dist/shared/lib/utils.js");
 
 /***/ }),
 
+/***/ 968:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/head");
+
+/***/ }),
+
 /***/ 6689:
 /***/ ((module) => {
 
@@ -1135,6 +1265,14 @@ module.exports = require("react-dom");
 "use strict";
 module.exports = require("react/jsx-runtime");
 
+/***/ }),
+
+/***/ 9648:
+/***/ ((module) => {
+
+"use strict";
+module.exports = import("axios");;
+
 /***/ })
 
 };
@@ -1144,7 +1282,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [210,676,664], () => (__webpack_exec__(8535)));
+var __webpack_exports__ = __webpack_require__.X(0, [210,676,664,369], () => (__webpack_exec__(6505)));
 module.exports = __webpack_exports__;
 
 })();

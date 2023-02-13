@@ -12,16 +12,16 @@ export default function About() {
 const [cloud,setCloud] = useState()
 
 useEffect(()=>{
-  GetTag().then((result) => {
+  // GetTag().then((result) => {
 
-    result.data.forEach((item:any) => {
-      item['value'] = item.id+2
-      delete item['createTime']
-    });
-    setCloud(result.data)
-  }).catch((err) => {
-    console.log(err)
-  });
+  //   result.data.forEach((item:any) => {
+  //     item['value'] = item.id
+  //     delete item['createTime']
+  //   });
+  //   setCloud(result.data)
+  // }).catch((err) => {
+  //   console.log(err)
+  // });
 },[])
 
   return (
@@ -37,7 +37,7 @@ useEffect(()=>{
 
        <Grid item xs={12}  md={4}>
         
-      <CloudChart tag={cloud}/>
+      <CloudChart/>
        </Grid>
 
      </Grid>

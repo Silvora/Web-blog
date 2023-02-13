@@ -14,9 +14,9 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_0__]);
 axios__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
-let baseURL = "http://api.757909.top/blog";
+//let baseURL = "http://127.0.0.1:7412/blog"
 // if(process.env == 'production'){
-//     baseURL="http://192.168.0.0.1/api"
+let baseURL = "http://api.757909.top/blog";
 // }
 const http = axios__WEBPACK_IMPORTED_MODULE_0__["default"].create({
     baseURL: baseURL,
@@ -50,16 +50,22 @@ __webpack_async_result__();
 
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Cj": () => (/* binding */ GetTag),
+/* harmony export */   "HA": () => (/* binding */ GetTotal),
+/* harmony export */   "Mh": () => (/* binding */ GetSearchList),
+/* harmony export */   "V9": () => (/* binding */ GetMarkdownItem),
 /* harmony export */   "io": () => (/* binding */ GetMarkdown),
-/* harmony export */   "qw": () => (/* binding */ GetClass)
+/* harmony export */   "qw": () => (/* binding */ GetClass),
+/* harmony export */   "rR": () => (/* binding */ AddRead),
+/* harmony export */   "wc": () => (/* binding */ GetRead),
+/* harmony export */   "zl": () => (/* binding */ GetNotice)
 /* harmony export */ });
+/* unused harmony export GetTag */
 /* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3116);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_http__WEBPACK_IMPORTED_MODULE_0__]);
 _http__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
 function GetTag() {
-    return _http__WEBPACK_IMPORTED_MODULE_0__/* ["default"].request */ .Z.request({
+    return http.request({
         url: "/tag",
         method: "Get"
     });
@@ -73,6 +79,43 @@ function GetClass() {
 function GetMarkdown() {
     return _http__WEBPACK_IMPORTED_MODULE_0__/* ["default"].request */ .Z.request({
         url: "/markdown",
+        method: "Get"
+    });
+}
+function GetMarkdownItem(url) {
+    return _http__WEBPACK_IMPORTED_MODULE_0__/* ["default"].request */ .Z.request({
+        url: "/markdownItem/" + url,
+        method: "Get"
+    });
+}
+function GetSearchList(params) {
+    return _http__WEBPACK_IMPORTED_MODULE_0__/* ["default"].request */ .Z.request({
+        url: "/search",
+        method: "Get",
+        params
+    });
+}
+function GetNotice() {
+    return _http__WEBPACK_IMPORTED_MODULE_0__/* ["default"].request */ .Z.request({
+        url: "/notice",
+        method: "Get"
+    });
+}
+function AddRead() {
+    return _http__WEBPACK_IMPORTED_MODULE_0__/* ["default"].request */ .Z.request({
+        url: "/read",
+        method: "Post"
+    });
+}
+function GetRead() {
+    return _http__WEBPACK_IMPORTED_MODULE_0__/* ["default"].request */ .Z.request({
+        url: "/read",
+        method: "Get"
+    });
+}
+function GetTotal() {
+    return _http__WEBPACK_IMPORTED_MODULE_0__/* ["default"].request */ .Z.request({
+        url: "/total",
         method: "Get"
     });
 }
